@@ -1,0 +1,16 @@
+<header>
+  <div class="container">
+    <a [routerLink]="['/']" class="logo" routerLinkActive="router-link-active">{{ appTitle }}</a>
+    <nav>
+      <ul>
+        <li>
+          <a [routerLink]="['/']">Home | <fa-icon icon="server"></fa-icon></a> 
+        </li>
+
+        <li>
+          <a [routerLink]="['/team']">Team | <fa-icon icon="users"></fa-icon></a> 
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

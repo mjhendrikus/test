@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -69,6 +69,10 @@
               "browserTarget": "team-code:build:production"
             }
           }
+          // ,"hmr": {
+          //   "hmr": true,
+          //   "browserTarget": "team-code:build:hmr"
+          // }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

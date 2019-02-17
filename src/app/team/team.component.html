@@ -1,49 +1,57 @@
 
+
+
 <div class="card m-b-md">
     <div class="card-body">
-        <h4>Team</h4>
-        <fa-icon icon="users"></fa-icon>
+        <div class="page-header">
+            <h1>Team</h1>
+            <fa-icon icon="users"></fa-icon>
+        </div>
+
         <div class="overflow-x-scroll">
           <table class="table table-striped table-sm">
               <thead class="thead-dark">
               <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Connection</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let team of TeamData" class="small m-b-none">
-                <td>
-                  <a (click)="getMember(team.id)">
-                    {{team.id}}
-                      <i class="fa fa-chevron-right"></i>
-                  </a>
-                    <!-- <fa-icon icon="icon-chevron-right"></fa-icon> -->
-                  
-                </td>
-                <td>{{team.name}}</td>
-                <td>
-                  <dl>
-                    <dd>{{team.address.street}} | {{team.address.city}} | {{team.address.suite}}</dd>
-                    <dd>{{team.address.zipcode}}</dd>
-                  </dl>
-                </td>
-                <td>
-                    <dl>
-                      <dd> {{team.phone}} </dd>
-                      <dd><a href="mailto:{{team.email}}" data-rel="external" > {{team.email}} </a></dd>
-                    </dl>
-                </td>
-              </tr>
-              <tr>
-
-              </tr>
+                <ng-template ngFor let-team [ngForOf]="TeamData">
+                  <tr class="small m-b-none">
+                    <td>
+                        <a *ngIf="personData.id !== team.id" (click)="getMember(team.id)">
+                          {{team.id}}
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                        <a *ngIf="personData.id === team.id" (click)="closeMember()">
+                            {{team.id}}
+                              <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </td>
+                    <td>{{team.name | dashify}}</td>
+                    <td>
+                      <dl>
+                        <dd>{{team.address.street | dashify}} | {{team.address.city | dashify}}</dd>
+                      </dl>
+                    </td>
+                    <td>
+                        <dl>
+                          <dd><b>Phone:</b> {{team.phone}} </dd>
+                          <dd><b>Email:</b><a href="mailto:{{team.email}}" data-rel="external" > {{team.email}} </a></dd>
+                        </dl>
+                    </td>
+                  </tr>
+                  <tr *ngIf="personData && personData.id === team.id" class="bg-light">
+                      <td colspan="6" class="bg-body text-white"> 
+                          <app-card [persondata]="team"></app-card>
+                      </td>
+                  </tr>
+              </ng-template>
             </tbody>
           </table>
         </div>
-
-    <!-- <app-datatables [data]="TeamData"></app-datatables> -->
-</div>
+    </div>
 </div>

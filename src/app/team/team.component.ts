@@ -11,32 +11,32 @@ export class TeamComponent implements OnInit, OnDestroy {
   TeamData: object;
   personData: any = {};
 
-
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    // this.data.runSet();
-
-    this.data.getTeam().subscribe(data => {
+    const subscription = this.data.getTeam()
+      .subscribe(data => {
       this.TeamData = data;
-      console.log(this.TeamData)
+      subscription.unsubscribe();
     });
   }
 
   ngOnDestroy() {
-    // this.data
   }
 
-  getMember(id){
+  getMember(id: number) {
+    const subscription = this.data.getTeamDetails(id)
+      .subscribe(data => {
+      this.personData = data;
 
-    this.data.getTeamDetails(id)
-    .subscribe(data => {
+      console.log(this.personData)
 
-    })
-    console.log(id)
-
+      subscription.unsubscribe();
+    });
   }
 
-  
+  closeMember() {
+    this.personData = null;
+  }
 
 }

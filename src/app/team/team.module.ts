@@ -5,6 +5,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { DatatablesModule } from '../shared/datatables/datatables.module';
 import { TeamComponent } from './team.component';
+import { CardModule } from '../shared/card/card.module';
+import { CardComponent } from '../shared/card/card.component';
+// import { NbCardModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [TeamComponent],
@@ -12,9 +15,10 @@ import { TeamComponent } from './team.component';
     CommonModule,
     FontAwesomeModule,
     SharedModule,
-    DatatablesModule
+    DatatablesModule,
+    CardModule
   ],
   exports: [TeamComponent],
-  providers: [TeamComponent]
+  providers: []
 })
 export class TeamModule { }

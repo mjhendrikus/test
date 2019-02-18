@@ -1,0 +1,13 @@
+.warning-title {
+    animation: 15s fadeIn;
+  
+    visibility: visible;
+  }
+  @keyframes fadeIn {
+    99% {
+      visibility: visible;
+    }
+    100% {
+      visibility: hidden;
+    }
+  }

@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { DashifyPipe } from './dashify.pipe';
 import { GmtPipe } from './gmt.pipe';
-import { TextPipe } from './text.pipe';
 import { TextifyPipe } from './textify.pipe';
 
 @NgModule({
-  declarations: [DashifyPipe, GmtPipe, TextPipe, TextifyPipe],
+  declarations: [DashifyPipe, GmtPipe, TextifyPipe],
   imports: [
     CommonModule
   ],
-  exports: [DashifyPipe, GmtPipe, TextPipe],
-  providers: [DashifyPipe, GmtPipe, TextPipe]
+  exports: [DashifyPipe, GmtPipe],
+  providers: [DashifyPipe, GmtPipe]
 })
 export class PipesModule { }

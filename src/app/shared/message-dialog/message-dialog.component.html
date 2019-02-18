@@ -1,11 +1,16 @@
-<div class="modal-header">
-
-    <dl class="dl-horizontal text-md-left">
-        <dt>Title: {{body[2] | dashify}}</dt>
-        <dd><b>User Id: </b> {{body[0] | dashify}}</dd>
-        <dd><b>Message: </b>{{body[1] | dashify}}</dd>
-    </dl>
-
-
+<div class="card m-b-md">
+    <div class="card-body">
+      <div class="page-header">
+          <h4> Message Confirmation: </h4>
+      </div>
+      <div class="modal-header">
+          <dl class="dl-horizontal text-md-left">
+              <dt>Title: {{body[1] | dashify}}</dt>
+              <dd><b>Message: </b>{{body[2] | dashify}}</dd>
+              <dd><b>Date: </b>{{body[3] | gmt | dashify}}</dd>
+              <dd><b>Submitted by Id: </b> {{body[0] | dashify}}</dd>
+          </dl>
+      </div>
+  </div>
 </div>
   

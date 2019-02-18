@@ -12,54 +12,52 @@
     <ng-template #template>
 
        <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
+        <h4 class="modal-title pull-left">Message</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <textarea class="form-control" id="title" maxlength="25" 
-        type="number" name="title" [(ngModel)]="titleModel">
+        <p>Title</p>
+          <textarea class="form-control" id="title" maxlength="25" 
+          name="title" [(ngModel)]="titleModel">
         </textarea>
 
-        <textarea class="form-control" id="message" maxlength="25" 
-        type="number" name="title" [(ngModel)]="mainMessage">
-        </textarea>
-
-        <span style="color:red" *ngIf="titleModel?.length > 24">
-        25 max
-        </span>
-        <span style="color:red" *ngIf="mainMessage?.length > 24">
-            25 max
+        <span class="warning-title" style="color:red" *ngIf="titleModel?.length > 24">
+            Please limit title to 25 charchters.
         </span>
 
-        <div  class="alert alert-danger">
-            <div>
-            Comment is required.
-            </div>
-          </div>
-
-          <!-- <div *ngIf="commentModel.invalid && commentModel.dirty" class="alert alert-danger">
-            <div *ngIf="commentModel.errors.required">
-            Comment is required.
-            </div>
-          </div> -->
-
-
-
+        <p>Message</p>
+          <textarea class="form-control" id="message" maxlength="200" rows="10" 
+          autofocus="autofocus" name="title" [(ngModel)]="mainMessage">
+          </textarea>
+        
+        <span class="messagewarning" style="color:red" *ngIf="mainMessage?.length > 199">
+            Please limit message to 200 charchters.
+        </span>
+       
       </div>
 
       <div class="modal-footer">
           <button class="btn btn-outline btn-default" type="button" (click)="cancel()">
-            <!-- <span *ngIf="isEnabled">{{cancelButtonText}}</span> -->
             <span *ngIf="!isEnabled">Close</span>
           </button>
-          <button class="btn btn-outline btn-success" type="button" 
-          (click)="send()" >Send</button>
+
+          <div *ngIf="mainMessage?.length > 0 && titleModel?.length > 0">
+            <button class="btn btn-outline btn-success" type="button" 
+            (click)="send()">Send</button>
+          </div>
+
+          <div *ngIf="mainMessage?.length == 0 || titleModel?.length == 0">
+              <button class="btn btn-outline btn-success disabled" type="button" 
+              >Send</button>
+            </div>
+
           <button class="btn btn-outline btn-danger" type="button" 
           (click)="ok()" *ngIf="isEnabled && alternateOkButton" 
-          [disabled]="commentModel.invalid">{{okButtonText}}</button>
+          [disabled]="commentModel.invalid">{{okButtonText}}
+          </button>
         </div>
 
       </ng-template>

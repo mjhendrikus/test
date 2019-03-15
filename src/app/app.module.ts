@@ -21,7 +21,6 @@ import { MessageDialogComponent } from './shared/message-dialog/message-dialog.c
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
-import { NbCardModule, NbThemeModule, NbLayoutModule, NbListModule} from '@nebular/theme';
 import { PipesModule } from './shared/pipes/pipes.module';
 import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 

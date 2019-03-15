@@ -7,7 +7,6 @@ import { DatatablesModule } from '../shared/datatables/datatables.module';
 import { TeamComponent } from './team.component';
 import { CardModule } from '../shared/card/card.module';
 import { CardComponent } from '../shared/card/card.component';
-// import { NbCardModule, NbThemeModule, NbLayoutModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [TeamComponent],

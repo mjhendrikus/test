@@ -26,9 +26,6 @@ export class MessageDialogComponent implements OnInit, OnChanges {
     this.body[1] = this.Body.header;
     this.body[2] = this.Body.body;
     this.body[3] = this.Body.timestamp;
-
-    console.log('$$$$  ')
-    console.log(this.body)
   }
 
 }

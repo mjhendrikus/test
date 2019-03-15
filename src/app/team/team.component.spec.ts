@@ -1,5 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  HttpClientModule
+} from '@angular/common/http';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { PipesModule } from '../shared/pipes/pipes.module';
+import { CardComponent } from '../shared/card/card.component';
 import { TeamComponent } from './team.component';
 
 describe('TeamComponent', () => {
@@ -8,7 +15,11 @@ describe('TeamComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamComponent ]
+      imports: [ FontAwesomeModule, PipesModule, HttpClientModule ],
+      declarations: [ 
+        TeamComponent, 
+        CardComponent 
+      ]
     })
     .compileComponents();
   }));

@@ -1,0 +1,20 @@
+language: node_js
+node_js: "10"
+
+addons:
+  firefox: "latest"
+
+before_install:
+  - export CHROME_BIN=chromium-browser  #Karma Cl
+  - export DISPLAY=:99.0
+
+before_script:
+  - npm install npm -g
+  - npm install @angular/cli -g
+  - npm install
+  - sh -e /etc/init.d/xvfb start
+
+branches:
+  only:
+  - master
+  

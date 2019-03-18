@@ -3,14 +3,14 @@
       <div class="row">
           <div class="col-sm-4 offset-sm-1 bg-white text-dark">
             <dl class="dl-horizontal text-md-left">
-                <dt>Team Member: {{name | dashify}}</dt>
+                <dt class="card-name">Team Member: {{name | dashify}}</dt>
                 <dd>{{address[0] | dashify}} | {{address[1] | dashify}}</dd>
                 <dd>{{address[2] | dashify}}, {{address[3] | dashify}}</dd>
                 <dd><b>Email: </b>
-                  <a href="mailto:{{email}}" data-rel="external" > {{email}} </a>
+                  <a class="card-email" href="mailto:{{email}}" data-rel="external" > {{email}} </a>
                 </dd>
                 <dd><b>Web: </b>
-                  <a href="{{web}}" rel="noopener noreferrer" target="_blank">{{web}}</a>
+                  <a class="card-web" href="{{web}}" rel="noopener noreferrer" target="_blank">{{web}}</a>
                 </dd>
                 <dd><b>Map: </b>
                   <a ><i class="fa fa-globe"></i></a>
@@ -24,16 +24,5 @@
               <dd><b>Info: </b>{{company[2] | dashify}}</dd>
           </dl>
         </div>
-
-        <!-- <div class="col-sm-4 offset-sm-1 bg-white text-dark">
-            <dl class="dl-horizontal text-md-left">
-                <dt>Geolocation</dt>
-                <dd><a (click)="getMember(team.id)">
-                      <i class="fa fa-globe-americas"></i>
-                  </a>
-                </dd>
-            </dl>
-          </div> -->
-
   </div>
 </div>

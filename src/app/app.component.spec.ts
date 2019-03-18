@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from '../app/nav/nav.component';
 
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

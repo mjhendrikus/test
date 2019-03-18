@@ -9,6 +9,7 @@ import { NavComponent } from './nav.component';
 import { TeamComponent } from '../team/team.component';
 import { HomeComponent } from '../home/home.component';
 import { PostComponent } from '../post/post.component';
+import { UserComponent } from '../user/user.component';
 
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { CardComponent } from '../shared/card/card.component';
@@ -27,6 +28,7 @@ describe('NavComponent', () => {
         TeamComponent, 
         PostComponent,
         CardComponent,
+        UserComponent,
         MessageDialogComponent
       ]
     })

@@ -17,6 +17,10 @@ export class TeamComponent implements OnInit, OnDestroy {
     const subscription = this.data.getTeam()
       .subscribe(data => {
       this.TeamData = data;
+
+console.log('TEAMDATA--> ')
+console.log(this.TeamData)
+
       subscription.unsubscribe();
     });
   }
@@ -29,7 +33,6 @@ export class TeamComponent implements OnInit, OnDestroy {
       .subscribe(data => {
       this.personData = data;
 
-      console.log(this.personData)
 
       subscription.unsubscribe();
     });

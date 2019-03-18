@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { GeoComponent } from './shared/geo/geo.component';
 import { CardComponent } from './shared/card/card.component';
 import { MessageDialogComponent } from './shared/message-dialog/message-dialog.component';
+import { UserComponent } from './user/user.component';
+import { PostComponent } from './post/post.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
@@ -39,7 +41,6 @@ import {
   faFileImage,
   faCircleNotch
 } from '@fortawesome/free-solid-svg-icons';
-import { PostComponent } from './post/post.component';
 library.add(faThLarge);
 library.add(faUser);
 library.add(faUsers);
@@ -63,7 +64,8 @@ library.add(faCircleNotch);
     GeoComponent,
     CardComponent,
     MessageDialogComponent,
-    PostComponent
+    PostComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

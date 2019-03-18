@@ -17,9 +17,6 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-console.log(this.persondata)
-
     this.name = this.persondata.name;
     this.address[0] = this.persondata.address.street;
     this.address[1] = this.persondata.address.suite;

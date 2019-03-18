@@ -22,31 +22,34 @@
                 <ng-template ngFor let-team [ngForOf]="TeamData">
                   <tr class="small m-b-none">
                     <td>
-                        <a *ngIf="personData.id !== team.id" (click)="getMember(team.id)">
+                        <a class="team-id" *ngIf="personData.id !== team.id" (click)="getMember(team.id)">
                           {{team.id}}
                             <i class="fa fa-chevron-right"></i>
                         </a>
-                        <a *ngIf="personData.id === team.id" (click)="closeMember()">
+                        <a class="team-id" *ngIf="personData.id === team.id" (click)="closeMember()">
                             {{team.id}}
                               <i class="fa fa-chevron-down"></i>
                         </a>
                     </td>
-                    <td>{{team.name | dashify}}</td>
+                    <td  class="team-name">
+                      <app-user [user]="team.name"></app-user>
+                      <!-- {{team.name | dashify}} -->
+                    </td>
                     <td>
                       <dl>
-                        <dd>{{team.address.street | dashify}} | {{team.address.city | dashify}}</dd>
+                        <dd  class="team-address">{{team.address.street | dashify}} | {{team.address.city | dashify}}</dd>
                       </dl>
                     </td>
                     <td>
                         <dl>
-                          <dd><b>Phone:</b> {{team.phone}} </dd>
-                          <dd><b>Email:</b><a href="mailto:{{team.email}}" data-rel="external" > {{team.email}} </a></dd>
+                          <dd  class="team-phone"><b>Phone:</b> {{team.phone}} </dd>
+                          <dd  class="team-email"><b>Email:</b><a href="mailto:{{team.email}}" data-rel="external" > {{team.email}} </a></dd>
                         </dl>
                     </td>
                   </tr>
                   <tr *ngIf="personData && personData.id === team.id" class="bg-light">
                       <td colspan="6" class="bg-body text-white"> 
-                          <app-card [persondata]="team"></app-card>
+                          <app-card [persondata]="team"></app-card> <!-- Child Component -->
                       </td>
                   </tr>
               </ng-template>

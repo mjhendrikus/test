@@ -18,8 +18,8 @@ export class TeamComponent implements OnInit, OnDestroy {
       .subscribe(data => {
       this.TeamData = data;
 
-console.log('TEAMDATA--> ')
-console.log(this.TeamData)
+        console.log('Team Component ngOnInit values: ')
+        console.log(this.TeamData)
 
       subscription.unsubscribe();
     });

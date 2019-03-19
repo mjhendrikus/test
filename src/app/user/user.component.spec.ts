@@ -13,7 +13,7 @@ import { By } from '@angular/platform-browser';
 
 class MockConsumer {
   team = {
-    name: 'foo'
+    name: 'Mock Name'
   };
 }
 
@@ -38,12 +38,17 @@ describe('UserComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should bind user', () => {
-    const userName = fixture.debugElement.query(By.css('.user-name')).nativeElement;
+  it('should bind user', () => {
+    let userName = fixture.debugElement.query(By.css('.user-name'));
     fixture.detectChanges();
+    expect(userName).toBeTruthy();
+    const content = userName.children;
+    const name: any = userName.nativeElement;
+    const expected = {name: 'Mock Name'};
 
-    console.log('userName--> ')
-    console.log(userName.innerText)
-    // expect(userName.innerText).toBe('foo');
+    console.log('content--> ')
+    console.log(content)
+
+    expect(name.innerText).not.toBeUndefined;
   });
 });

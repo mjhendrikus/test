@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { MessageDialogComponent } from './message-dialog.component';
+import { PipesModule } from '../pipes/pipes.module';
+
 
 describe('MessageDialogComponent', () => {
   let component: MessageDialogComponent;
@@ -8,6 +12,7 @@ describe('MessageDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ FontAwesomeModule, PipesModule ],
       declarations: [ MessageDialogComponent ]
     })
     .compileComponents();

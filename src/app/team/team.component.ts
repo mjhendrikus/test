@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
+import { Observable, of, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-team',
@@ -10,31 +12,32 @@ export class TeamComponent implements OnInit, OnDestroy {
 
   TeamData: object;
   personData: any = {};
+  private subscription: Subscription;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    const subscription = this.data.getTeam()
+    this.subscription = this.data.getTeam()
       .subscribe(data => {
       this.TeamData = data;
 
         console.log('Team Component ngOnInit values: ')
         console.log(this.TeamData)
-
-      subscription.unsubscribe();
     });
   }
 
   ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   getMember(id: number) {
-    const subscription = this.data.getTeamDetails(id)
+    this.subscription = this.data.getTeamDetails(id)
       .subscribe(data => {
       this.personData = data;
 
+      console.log('Team Component getMember values: ')
+      console.log(this.personData)
 
-      subscription.unsubscribe();
     });
   }
 

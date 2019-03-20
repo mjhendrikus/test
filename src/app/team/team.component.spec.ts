@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -17,23 +17,16 @@ import { DataService } from '../shared/services/data.service';
 
 import { UserComponent } from '../user/user.component';
 
-import { faSignature } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute } from '@angular/router'
-
 const getPersondata: any = require('src/assets/mock-data/persondata.json');
+import { DataServiceStub } from 'src/assets/data-service-stub';
 
-//
-// ** TEAM - PARENT **
-//
-describe('TeamComponent - Parent', () => {
+// *** TEAM - CALL ngOnInit() **/
+describe('TeamComponent - ngOnInit()', () => {
+  let de:any = null;
+  let injector: TestBed;
   let component: TeamComponent;
   let fixture: ComponentFixture<TeamComponent>;
-
-  class MockDataService {
-    getTeam(): Observable<any>{
-        return of(getPersondata)
-    }
-  }
+  let service = DataService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,10 +38,15 @@ describe('TeamComponent - Parent', () => {
       ],
       // schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: DataService, useClass: MockDataService }
+        { provide: DataService, useClass: OnInit_MockDataService }
       ]
     })
     .compileComponents();
+
+    //Inject Service for function testing
+    injector = getTestBed();
+    service = injector.get(DataService);
+
   }));
 
   beforeEach(() => {
@@ -59,93 +57,118 @@ describe('TeamComponent - Parent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    fixture.detectChanges();
   });
 
-  // it('should call updateTimeStamp', () => {
+  //TEST THE FRONT END TABLE IS BUILD
+  it('should create Team table', () => {
+    de = fixture.debugElement.query(By.css('.card-body>div>table'));
+    fixture.detectChanges();
+    expect(de).toBeTruthy();
 
-  //   spyOn(component, 'updateTimeStamp');
+    // console.log('TABLE CSS CALL:')
+    // console.log(de)
 
-  //   component.update();
+  });
 
-  //   expect(component.childComponent.updateTimeStamp).toHaveBeenCalled();
+   //TEST THE FRONT END TABLE TD IS BUILD
+   it('should create Team table', () => {
+    de = fixture.debugElement.query(By.css('.card-body>div>table>tbody>tr>td'));
+    fixture.detectChanges();
+    expect(de).not.toBeNull();
 
-  // });
+    // console.log('CSS CALL -->')
+    // console.log(de)
 
+  });
 
+  //SPY TO DIRECT CALL
+  xit('should Spy getMember with id ', () => {
+    console.log('CALL MEMBER--> ');
+    const spy = spyOn(fixture.componentInstance, 'getMember');
+    console.log(spy)
+  })
+
+  //FAILING DIRECT CALLS
+  xit('should Direct Component getMember with id  -- FAIL ', () => {
+    console.log('CALL MEMBER--> ');
+    console.log(component.getMember(2))
+  })
+
+  xit('should Direct ComponentInstance getMember with id  -- FAIL ', () => {
+    console.log('CALL MEMBER--> ');
+    console.log(fixture.componentInstance.getMember(2))
+  })
 });
 
 
-// @Component({
-//   selector  : 'app-card',
-//   template  : '<app-card [persondata]="team"></app-card>'
-//   // directives: [ ProductThumbnail ]
-//  })
-//  class PersonDataTemplate { 
-//   persondata = {
-//       name: 'test1',
-//       address: ['1', '2', '3', '4'],
-//       geo: ['1', '2'],
-//       email: 'test1',
-//       web: 'test1',
-//       company: ['1', '2', '3']
-//   }
-//   // persondata = 'Testing input'; //mock your input 
-//  }
+//*** CALL SINGLE FUNCTION - getMember(id: number) */
+describe('TeamComponent - getMember(id: number)', () => {
+  let injector: TestBed;
+  let component: TeamComponent;
+  let fixture: ComponentFixture<TeamComponent>;
+  let service = DataService;
 
-// //
-// // Test TeamComponents Child Component -- CardComponent
-// //
-// xdescribe('TeamComponent - Child (CardComponent)', () => {
-//   let component: PersonDataTemplate;
-//   let fixture: ComponentFixture<PersonDataTemplate>;
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [ FontAwesomeModule, PipesModule, HttpClientModule ],
+      declarations: [ 
+        TeamComponent,
+        CardComponent,
+        UserComponent
+      ],
+      // schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: DataService, useClass: Function_MockDataService }
+      ]
+    })
+    .compileComponents();
 
+    //Inject Service for function testing
+    injector = getTestBed();
+    service = injector.get(DataService);
 
-//   class MockDataService {
-//     getTeam(): Observable<any>{
-//         return of(getPersondata)
-//     }
-//   }
+  }));
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       imports: [ FontAwesomeModule, PipesModule, HttpClientModule ],
-//       declarations: [ CardComponent,
-//         PersonDataTemplate
-//       ],
-//       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-//       providers: [
-//         { provide: DataService, useClass: MockDataService }
-//       ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TeamComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(PersonDataTemplate);
-//     component = fixture.componentInstance;
-//     // const cardName = fixture.debugElement.query(By.css('card-name'));
-//     // component = fixture.debugElement.query(By.css('card-name'));
-//     fixture.detectChanges();
-//   });
+  xit('should create', () => {
+    expect(component).toBeTruthy();
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should test getTeamDetails', async(() => {
+    TestBed.compileComponents().then(() => {
+      service.getTeamDetails(2).subscribe(data => {
+        console.log('TEAM DETAILS --> ')
+        console.log(data)
+      })
+    })
+    fixture.detectChanges();
+  }));
+});
 
-//   fit('should bind Parent', () => {
+class OnInit_MockDataService {
+  getTeam(): Observable<any>{
+      return of(getPersondata)
+  }
+  getTeamDetails(id:number): Observable<any[]>{
+    const mockdata: any = DataServiceStub.getTeamDetailsData();
+    return of(mockdata);
+  }
+}
 
-//     const cardName = fixture.debugElement.query(By.css('.card-name')).nativeElement;
-//     fixture.detectChanges();
-
-//     console.log('TEAM cardName # ')
-//     console.log(cardName)
-//     // console.log(fixture.debugElement.children[0])
-
-//     // expect(component).toBeTruthy();
-//   });
-// });
-
-
-
-
+class Function_MockDataService {
+  getTeam(): Observable<any>{
+      return of(getPersondata)
+  }
+  getTeamDetails(id:number): Observable<any[]>{
+    const mockdata: any = DataServiceStub.getTeamDetailsData();
+    return of(mockdata);
+  }
+}
 

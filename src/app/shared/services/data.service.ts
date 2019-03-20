@@ -13,6 +13,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DataService extends ApiService {
+  static getTeamDetails(arg0: number): any {
+    throw new Error("Method not implemented.");
+  }
 
   protected get baseApiUrl(): string { return environment.API.MESSAGE; }
 
@@ -27,6 +30,7 @@ export class DataService extends ApiService {
       catchError(this.handleError)
     );
   }
+  
   getTeamDetails(id: number): Observable<any[]> {
     return this.http.get('https://jsonplaceholder.typicode.com/users/' + id)
     .pipe(

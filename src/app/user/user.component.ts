@@ -6,9 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 
-// export class UserComponent {
-//   @Input() user;
-// }
+//User Component Log
 export class UserComponent implements OnInit {
   @Input() user;
 

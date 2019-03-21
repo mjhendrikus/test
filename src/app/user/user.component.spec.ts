@@ -37,13 +37,12 @@ describe('UserComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should bind user', () => {
+  it('User Component - should bind user', () => {
     let userName = fixture.debugElement.query(By.css('.user-name'));
     fixture.detectChanges();
     expect(userName).toBeTruthy();
     const content = userName.children;
     const name: any = userName.nativeElement;
-    const expected = {name: 'Mock Name'};
 
     console.log('content--> ')
     console.log(content)

@@ -16,13 +16,14 @@ export class TeamComponent implements OnInit, OnDestroy {
 
   constructor(private data: DataService) { }
 
+  //TEAM NGONINIT
   ngOnInit() {
     this.subscription = this.data.getTeam()
       .subscribe(data => {
       this.TeamData = data;
 
-        console.log('Team Component ngOnInit values: ')
-        console.log(this.TeamData)
+        // console.log('Team Component ngOnInit values: ')
+        // console.log(this.TeamData)
     });
   }
 

@@ -16,7 +16,7 @@ export class TeamComponent implements OnInit, OnDestroy {
 
   constructor(private data: DataService) { }
 
-  //TEAM NGONINIT
+  // 1 - TEAM NGONINIT
   ngOnInit() {
     this.subscription = this.data.getTeam()
       .subscribe(data => {

@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    service:
+        image: 'unitedsolutions/service:latest'
+        command: 'node server'
+        build: '.'
+        ports:
+            - "${SERVICE_UI_PORT}:5000"

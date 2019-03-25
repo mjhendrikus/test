@@ -41,6 +41,7 @@ import {
   faFileImage,
   faCircleNotch
 } from '@fortawesome/free-solid-svg-icons';
+import { VersionComponent } from './version/version.component';
 library.add(faThLarge);
 library.add(faUser);
 library.add(faUsers);
@@ -65,7 +66,8 @@ library.add(faCircleNotch);
     CardComponent,
     MessageDialogComponent,
     PostComponent,
-    UserComponent
+    UserComponent,
+    VersionComponent
   ],
   imports: [
     BrowserModule,

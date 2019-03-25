@@ -7,7 +7,7 @@ export const environment = {
   name: 'development',
   API: {
     MESSAGE: 'http://localhost:4200/team',
-    VERSION: 'http://localhost:5555/api/v1'
+    VERSION: 'http://localhost:5555'
   }
 };
 

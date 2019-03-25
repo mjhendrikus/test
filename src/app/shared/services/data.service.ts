@@ -18,6 +18,8 @@ export class DataService extends ApiService {
   }
 
   protected get baseApiUrl(): string { return environment.API.MESSAGE; }
+  protected get versionApiUrl(): any { return environment.API.VERSION; }
+
 
   constructor(
      http: HttpClient
@@ -39,10 +41,10 @@ export class DataService extends ApiService {
     );
   }
 
-  getVersion(): Observable<any> {
-    return this.http.get('')
+  getVersion(): Observable<any[]> {
+    return this.http.get(this.versionApiUrl)
     .pipe(
-      map(x => x as any),
+      map(x => x as any[]),
       catchError(this.handleError)
     )
   }

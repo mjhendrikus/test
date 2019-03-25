@@ -38,4 +38,12 @@ export class DataService extends ApiService {
       catchError(this.handleError)
     );
   }
+
+  getVersion(): Observable<any> {
+    return this.http.get('')
+    .pipe(
+      map(x => x as any),
+      catchError(this.handleError)
+    )
+  }
 }

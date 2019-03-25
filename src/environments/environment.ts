@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   name: 'development',
   API: {
-    MESSAGE: 'http://localhost:4200/team'
+    MESSAGE: 'http://localhost:4200/team',
+    VERSION: 'http://localhost:5555/api/v1'
   }
 };
 
